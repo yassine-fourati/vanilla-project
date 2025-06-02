@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.fourati</groupId>
+		<artifactId>vanilla_project</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<packaging>jar</packaging>
+	<artifactId>vanilla_presentation</artifactId>
+
+	<dependencies>
+		<!-- Project modules -->
+		<dependency>
+			<groupId>com.fourati</groupId>
+			<artifactId>vanilla_business</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<!-- Spring Boot dependencies -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Spring Boot plugins -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- Maven Resources Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<filters>
+								<filter>src/main/resources/application.yml</filter>
+							</filters>
+							<resources>
+								<!-- Define the source resource file -->
+								<resource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>application.yml</include> <!-- Or application.properties -->
+									</includes>
+								</resource>
+							</resources>
+							<outputDirectory>${project.build.directory}/classes</outputDirectory> <!-- Destination for resources -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

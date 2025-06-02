@@ -1,0 +1,13 @@
+spring:
+  banner:
+    location: classpath:config/banner/banner_uat.txt
+  main:
+    log-startup-info: false
+  output:
+    ansi:
+      enabled: always
+
+server:
+  port: 8080
+  servlet:
+    context-path: /v1/api

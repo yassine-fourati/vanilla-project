@@ -1,0 +1,2 @@
+22-01-2025 10:28:20.0997|INFO |Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+22-01-2025 10:28:21.0002|INFO |For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
